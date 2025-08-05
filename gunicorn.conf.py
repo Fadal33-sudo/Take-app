@@ -16,4 +16,11 @@ tmp_upload_dir = None
 errorlog = "-"
 accesslog = "-"
 loglevel = "info"
-access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"' 
+access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+
+def on_starting(server):
+    """Initialize database on startup"""
+    from app import app, db
+    with app.app_context():
+        db.create_all()
+        print("Database tables created successfully!") 
