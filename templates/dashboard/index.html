@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Take.app Clone{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="h3 mb-4">Dashboard</h1>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="fas fa-store fa-2x"></i>
+                </div>
+                <div>
+                    <h3>{{ stores|length }}</h3>
+                    <p class="mb-0">Stores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="fas fa-box fa-2x"></i>
+                </div>
+                <div>
+                    <h3>{{ total_products }}</h3>
+                    <p class="mb-0">Products</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="fas fa-shopping-cart fa-2x"></i>
+                </div>
+                <div>
+                    <h3>{{ total_orders }}</h3>
+                    <p class="mb-0">Orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <i class="fas fa-dollar-sign fa-2x"></i>
+                </div>
+                <div>
+                    <h3>$0</h3>
+                    <p class="mb-0">Revenue</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.new_store') }}" class="btn btn-primary w-100">
+                            <i class="fas fa-plus"></i> Create New Store
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.stores') }}" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-store"></i> Manage Stores
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('dashboard.orders') }}" class="btn btn-outline-success w-100">
+                            <i class="fas fa-shopping-cart"></i> View Orders
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ url_for('auth.profile') }}" class="btn btn-outline-info w-100">
+                            <i class="fas fa-user"></i> Edit Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Activity -->
+<div class="row">
+    <!-- Recent Orders -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Recent Orders</h5>
+                <a href="{{ url_for('dashboard.orders') }}" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                {% if recent_orders %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Store</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in recent_orders %}
+                                <tr>
+                                    <td>{{ order.order_number }}</td>
+                                    <td>{{ order.store.name }}</td>
+                                    <td>${{ "%.2f"|format(order.total) }}</td>
+                                    <td>
+                                        <span class="badge bg-{{ 'success' if order.status == 'paid' else 'warning' }}">
+                                            {{ order.status.title() }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center">No orders yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Your Stores -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Your Stores</h5>
+                <a href="{{ url_for('dashboard.stores') }}" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                {% if stores %}
+                    <div class="list-group list-group-flush">
+                        {% for store in stores %}
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">{{ store.name }}</h6>
+                                <small class="text-muted">{{ store.products|length }} products</small>
+                            </div>
+                            <div>
+                                <span class="badge bg-{{ 'success' if store.is_active else 'secondary' }}">
+                                    {{ 'Active' if store.is_active else 'Inactive' }}
+                                </span>
+                                <a href="{{ url_for('store.store_page', slug=store.slug) }}" 
+                                   class="btn btn-sm btn-outline-primary ms-2" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted text-center">No stores yet</p>
+                    <div class="text-center">
+                        <a href="{{ url_for('dashboard.new_store') }}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Create Your First Store
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AdSense Ad -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="text-center">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %} 

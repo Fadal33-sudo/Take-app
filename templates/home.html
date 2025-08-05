@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Take.app Clone - Create Your Online Store{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Create Your Online Store in Minutes</h1>
+                <p class="lead mb-4">Start selling online with our powerful e-commerce platform. Support for Somaliland and global payment methods.</p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-rocket"></i> Create Your Store
+                    </a>
+                    <a href="{{ url_for('stores') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-store"></i> Browse Stores
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename='images/hero-image.png') }}" alt="Online Store" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Why Choose Take.app?</h2>
+            <p class="lead text-muted">Everything you need to start selling online</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-globe fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Global & Local Payments</h5>
+                        <p class="card-text">Accept payments from anywhere with Stripe, PayPal, and Somaliland payment methods (EVC Plus, Golis Saad, Edahab).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-mobile-alt fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Mobile-First Design</h5>
+                        <p class="card-text">Beautiful, responsive store designs that work perfectly on all devices - desktop, tablet, and mobile.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Revenue Generation</h5>
+                        <p class="card-text">Monetize your platform with Google AdSense, Adsterra, and premium subscriptions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Payment Methods Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Supported Payment Methods</h2>
+            <p class="lead text-muted">Accept payments from customers worldwide</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <div class="payment-icon mb-3">
+                        <i class="fab fa-stripe fa-3x text-primary"></i>
+                    </div>
+                    <h6>Stripe</h6>
+                    <p class="text-muted small">Global credit card payments</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <div class="payment-icon mb-3">
+                        <i class="fab fa-paypal fa-3x text-primary"></i>
+                    </div>
+                    <h6>PayPal</h6>
+                    <p class="text-muted small">International payments</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <div class="payment-icon mb-3">
+                        <i class="fas fa-mobile-alt fa-3x text-success"></i>
+                    </div>
+                    <h6>EVC Plus</h6>
+                    <p class="text-muted small">Somaliland mobile money</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="text-center">
+                    <div class="payment-icon mb-3">
+                        <i class="fas fa-money-bill-wave fa-3x text-warning"></i>
+                    </div>
+                    <h6>Cash on Delivery</h6>
+                    <p class="text-muted small">Pay when you receive</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="display-5 fw-bold mb-4">Ready to Start Selling?</h2>
+                <p class="lead mb-4">Join thousands of entrepreneurs who are already selling online with Take.app</p>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i> Get Started Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AdSense Ad -->
+<section class="py-4">
+    <div class="container">
+        <div class="text-center">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                 data-ad-slot="YOUR_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</section>
+{% endblock %} 

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}About - Take App{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="text-center mb-5">About Take App</h1>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3>Our Mission</h3>
+                    <p class="lead">Empowering entrepreneurs in Somaliland and beyond to create successful online businesses with ease.</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3>What We Offer</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">✅ Easy-to-use store creation platform</li>
+                        <li class="mb-2">✅ Local and global payment integrations</li>
+                        <li class="mb-2">✅ Mobile-responsive design</li>
+                        <li class="mb-2">✅ Comprehensive dashboard for store management</li>
+                        <li class="mb-2">✅ WhatsApp ordering integration</li>
+                        <li class="mb-2">✅ Revenue generation through ads</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3>Payment Methods</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Local Payments (Somaliland)</h5>
+                            <ul>
+                                <li>EVC Plus (Telesom)</li>
+                                <li>Golis Saad Service</li>
+                                <li>Edahab</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Global Payments</h5>
+                            <ul>
+                                <li>Stripe</li>
+                                <li>PayPal</li>
+                                <li>Cash on Delivery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg">Get Started Today</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
