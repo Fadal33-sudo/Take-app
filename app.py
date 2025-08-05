@@ -107,9 +107,7 @@ def internal_error(error):
     db.session.rollback()
     return render_template('errors/500.html'), 500
 
-# Create database tables
-with app.app_context():
-    db.create_all()
-
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False) 
