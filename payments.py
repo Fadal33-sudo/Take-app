@@ -9,8 +9,11 @@ import json
 
 payments_bp = Blueprint('payments', __name__)
 
-# Initialize payment gateways
-stripe.api_key = current_app.config['STRIPE_SECRET_KEY']
+# Stripe config waa in lagu sameeyaa create_app() ee app.py, ha isticmaalin current_app banaanka function.
+# Haddii aad u baahan tahay config, isticmaal gudaha function sida:
+# from flask import current_app
+# def some_func():
+#     key = current_app.config['STRIPE_SECRET_KEY']
 
 paypalrestsdk.configure({
     "mode": "sandbox",  # Change to "live" for production
