@@ -9,8 +9,7 @@ import json
 
 payments_bp = Blueprint('payments', __name__)
 
-# Stripe config waa in lagu sameeyaa create_app() ee app.py, ha isticmaalin current_app banaanka function.
-# PayPal config sidoo kale waa in lagu sameeyaa create_app() ee app.py, ha isticmaalin current_app banaanka function.
+# Stripe config iyo PayPal config waa in lagu sameeyaa create_app() ee app.py, ha isticmaalin current_app banaanka function.
 # Haddii aad u baahan tahay config, isticmaal gudaha function sida:
 # from flask import current_app
 # def some_func():
