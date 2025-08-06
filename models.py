@@ -60,7 +60,7 @@ class Product(db.Model):
     store_id = db.Column(db.Integer, db.ForeignKey('store.id'), nullable=False)
     image_url = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    
+
     order_items = db.relationship('OrderItem', backref='product', lazy=True)
 
 class Order(db.Model):

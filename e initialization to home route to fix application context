@@ -1,0 +1,5 @@
+[33m5ce65ba[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix application context by using gunicorn startup hook
+[33mac26069[m Add database initialization script and fix application context
+[33mbdae061[m Fix application context issue for database creation
+[33m2d198f2[m Fix Python version compatibility and remove Pillow dependency
+[33me98fb51[m Fix Pillow version compatibility issue
